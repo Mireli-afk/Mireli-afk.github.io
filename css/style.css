@@ -6,32 +6,39 @@ body {
 }
 
 /* --- HEADER Y NAVEGACIÓN --- */
-header, nav {
+header {
     background-color: #4A6B8A;
     color: white;
     padding: 15px 30px;
-}
-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-/* --- HEADER Y NAVEGACIÓN --- */
-header .logo { 
-    height: 70px;  /* Define la altura del logo. Puedes probar con 50px, 60px, 70px... */
-    width: auto;   /* El ancho se ajustará automáticamente para no deformar la imagen */
-}
-/* NUEVOS ESTILOS PARA LA BARRA DE NAVEGACIÓN FIJA Y TRANSPARENTE */
+
 nav {
-    background-color: rgba(74, 107, 138, 0.9); /* Mismo color azul, pero con 90% de opacidad */
+    background-color: rgba(74, 107, 138, 0.9);
     padding: 15px 30px;
-    position: sticky; /* La magia para que se quede fija */
-    top: 0;           /* La pegamos a la parte de arriba de la pantalla */
-    z-index: 1000;    /* Nos aseguramos de que esté por encima de otros elementos */
-    backdrop-filter: blur(5px); /* Efecto "cristal esmerilado" (opcional, pero se ve genial) */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
 }
-header h1 { font-size: 2em; margin: 0; }
-header .btn-volver { color: white; text-decoration: none; }
+
+header img.logo { 
+    height: 60px;
+    width: auto;
+}
+
+header h1 { 
+    font-size: 2em; 
+    margin: 0; 
+}
+
+header .btn-volver { 
+    color: white; 
+    text-decoration: none; 
+}
+
 nav ul {
     display: flex;
     justify-content: center;
@@ -39,30 +46,90 @@ nav ul {
     margin: 0;
     padding: 0;
 }
+
 nav ul li {
     padding: 10px 20px;
-    border-right: 1px solid white;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
-nav ul li:last-child { border-right: none; }
-nav a { color: white; text-decoration: none; font-weight: bold; }
+
+nav ul li:last-child { 
+    border-right: none; 
+}
+
+nav a { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
 
 /* --- CONTENEDOR PRINCIPAL Y COLUMNAS --- */
 .container {
     display: flex;
     gap: 40px;
+    align-items: flex-start;
     padding: 40px;
     background-color: white;
-    margin: 20px;
+    margin: 20px auto;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 1200px;
 }
-.columna-texto, .columna-formulario { flex: 1; }
-.columna-imagen { flex: 1; }
-.columna-imagen img { width: 100%; border-radius: 8px; }
 
-/* --- SECCIÓN DE BENEFICIOS Y COTIZACIÓN --- */
-#beneficios h2, #cotizacion h2 { margin-top: 0; }
-#beneficios ul { padding-left: 20px; }
+.columna-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* --- SECCIÓN DE BENEFICIOS --- */
+.columna-video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    flex: 1.2;
+}
+.columna-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+.columna-texto {
+    flex: 1;
+}
+.titulo-beneficios {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.icono-beneficios {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+#beneficios h2 {
+    margin-top: 0;
+}
+#beneficios ul {
+    padding-left: 20px;
+}
+
+/* --- SECCIÓN DE COTIZACIÓN --- */
+.columna-formulario {
+    flex: 1;
+}
+.columna-imagen {
+    flex: 1;
+}
+.columna-formulario h2 { 
+    margin-top: 0;
+}
 .columna-formulario form label {
     display: block;
     font-weight: bold;
@@ -119,4 +186,47 @@ nav a i {
 }
 .whatsapp-flotante img {
     display: none;
+}
+
+/* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+    header .btn-volver {
+        display: none;
+    }
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    nav ul li {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        text-align: center;
+    }
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+    .container {
+        flex-direction: column;
+        padding: 20px;
+        margin: 10px;
+    }
+    .columna-video {
+        flex: 1;
+        padding-bottom: 56.25%;
+        margin-bottom: 20px;
+    }
+    .columna-formulario form input {
+        width: 95%;
+    }
 }
