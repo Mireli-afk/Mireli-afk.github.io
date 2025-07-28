@@ -86,41 +86,56 @@ nav a {
 .columna-video {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* Proporción 16:9 para el video */
     height: 0;
     overflow: hidden;
-    flex: 1;
+    border-radius: 8px; /* Bordes redondeados para el contenedor del video */
+    
+    /* CAMBIO CLAVE: El video será un poco más grande que el texto */
+    flex: 1.2; 
 }
+
 .columna-video iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
 }
+
 .columna-texto {
+    /* CAMBIO CLAVE: Le asignamos su proporción base */
     flex: 1;
 }
+
 .titulo-beneficios {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
 }
-.icono-beneficios {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
+
+/* NUEVA REGLA: Reemplaza a .icono-beneficios para usar el ícono de estrella */
+.titulo-beneficios > i {
+    font-size: 32px;
+    color: #4A6B8A;
+    background-color: #f0f0f0;
+    padding: 12px;
+    border-radius: 50%;
+    line-height: 1;
+    width: 32px;
+    text-align: center;
 }
+
 #beneficios h2 {
-    margin-top: 0;
+    margin: 0; /* Ajuste para alinear bien con el ícono */
 }
+
 #beneficios ul {
     padding-left: 20px;
 }
 
-/* --- SECCIÓN DE UBICACIÓN (NUEVA) --- */
+/* --- SECCIÓN DE UBICACIÓN  */
 .columna-multimedia {
     flex: 1.5;
     display: flex;
