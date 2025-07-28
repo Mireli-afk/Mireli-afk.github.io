@@ -16,7 +16,11 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-header .logo { height: 50px; }
+/* --- HEADER Y NAVEGACIÓN --- */
+header .logo { 
+    height: 60px;  /* Define la altura del logo. Puedes probar con 50px, 60px, 70px... */
+    width: auto;   /* El ancho se ajustará automáticamente para no deformar la imagen */
+}
 header h1 { font-size: 2em; margin: 0; }
 header .btn-volver { color: white; text-decoration: none; }
 nav ul {
