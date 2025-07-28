@@ -120,6 +120,64 @@ nav a {
     padding-left: 20px;
 }
 
+/* --- SECCIÓN DE UBICACIÓN (NUEVA) --- */
+.columna-multimedia {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.mini-video {
+    width: 100%;
+    padding-bottom: 56.25%; /* Mantiene la proporción 16:9 */
+    height: 0;
+    position: relative;
+}
+.mini-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+.mapa-ubicacion iframe {
+    width: 100%;
+    height: 300px; /* Dale una altura fija, puedes ajustarla */
+    border: none; /* Quitamos el borde por defecto del iframe */
+    border-radius: 8px; /* Mantenemos los bordes redondeados */
+}
+.guia-llegada {
+    margin-top: 30px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.guia-llegada .punto, .guia-llegada .transporte {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.guia-llegada i {
+    font-size: 28px;
+    color: #333;
+    width: 30px;
+    text-align: center;
+}
+.guia-llegada .linea-punteada {
+    border-left: 2px dashed #ccc;
+    height: 50px;
+    margin-left: 14px; /* Centra la línea con los íconos */
+}
+.guia-llegada span {
+    font-weight: bold;
+}
+.guia-llegada p {
+    margin: 0;
+    line-height: 1.5;
+}
+
 /* --- SECCIÓN DE COTIZACIÓN --- */
 .columna-formulario {
     flex: 1;
