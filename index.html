@@ -32,16 +32,56 @@
     </nav>
 
     <main>
-        <!-- SECCIÓN DE BENEFICIOS -->
-        <section id="beneficios" class="container">
-            <!-- (El resto del contenido de esta sección no cambia) -->
-        </section>
+    <!-- SECCIÓN DE BENEFICIOS -->
+    <section id="beneficios" class="container">
+        <div class="columna-texto">
+            <h2>¿Qué beneficios obtengo al adquirir un lote?</h2>
+            <ul>
+                <li>Pórtico de ingreso con vigilancia 24/7 y cerco vivo</li>
+                <li>Servicios de luz, agua y desagüe instalados</li>
+                <li>Más del 50% del área del proyecto destinado para áreas verdes y recreativas, para tu comodidad
+                    <ul>
+                        <li>Cinco Parques Temáticos (Infantil, Fitness, Botánico, Arce y Brisas)</li>
+                        <li>Dos Canchas de Frontón</li>
+                        <li>Una Plataforma Multifuncional</li>
+                        <li>Una Cancha de Grass Sintético</li>
+                        <li>Una Alameda Peatonal</li>
+                        <li>Un bosque de árboles frutales</li>
+                        <li>Casa Club con Piscina</li>
+                    </ul>
+                </li>
+                <li>Por la compra de tu lote, te regalamos cinco diseños de casas con planos incluidos</li>
+            </ul>
+        </div>
+        <div class="columna-imagen">
+            <!-- Asegúrate de tener esta imagen en tu carpeta /images/ -->
+            <img src="images/foto-beneficios.jpg" alt="Personas felices con su nuevo lote">
+        </div>
+    </section>
 
-        <!-- SECCIÓN DE COTIZACIÓN -->
-        <section id="cotizacion" class="container">
-            <!-- (El resto del contenido de esta sección no cambia) -->
-        </section>
-    </main>
+    <!-- SECCIÓN DE COTIZACIÓN -->
+    <section id="cotizacion" class="container">
+        <div class="columna-formulario">
+            <h2>Cotización de lote</h2>
+            <form>
+                <label for="manzana">Manzana:</label>
+                <input type="text" id="manzana" placeholder="Ej: B, A, J">
+                
+                <label for="lote">Nº Lote:</label>
+                <input type="number" id="lote" placeholder="Ej: 1, 2, 3">
+
+                <div class="precio-display">
+                    <label>Precio:</label>
+                    <span id="precio-final">-</span>
+                </div>
+            </form>
+        </div>
+        <div class="columna-imagen">
+            <!-- Asegúrate de tener esta imagen en tu carpeta /images/ -->
+            <img src="images/mapa-lotes.png" alt="Mapa de lotes del proyecto">
+        </div>
+    </section>
+</main>
 
     <!-- Enlazamos nuestro archivo de JavaScript al final -->
     <script src="js/script.js"></script>
