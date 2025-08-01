@@ -28,6 +28,7 @@
             <li><a href="#ubicacion"><i class="fa-solid fa-location-dot"></i> Ubicación Proyecto</a></li>
             <li><a href="#cotizacion"><i class="fa-solid fa-map"></i> Planos y Precios</a></li>
             <li><a href="#financiamiento"><i class="fa-solid fa-hand-holding-dollar"></i> Financiamiento</a></li>
+            <li><a href="#oficinas"><i class="fa-solid fa-building"></i> Oficinas</a></li>
         </ul>
     </nav>
 
@@ -126,6 +127,73 @@
             <img src="images/mapa-lotes.png" alt="Mapa de lotes del proyecto">
         </div>
     </section>
+
+    <!-- SECCIÓN DE FINANCIAMIENTO -->
+        <section id="financiamiento">
+            <!-- Vista 1: Opciones de Pago -->
+            <div id="vista-opciones-pago" class="container">
+                <div class="columna-imagen">
+                    <img src="images/financiamiento.png" alt="Plano de lotes con sol">
+                </div>
+                <div class="columna-texto">
+                    <h2>Opciones de pago disponibles</h2>
+                    <p>Elige la forma que mejor se adapte a ti y asegura tu inversión hoy mismo. Separa tu unidad desde S/ 1,000.00 y obtén un descuento exclusivo de S/ 5,500.00, sin importar el plan que elijas:</p>
+                    <ul class="lista-checks">
+                        <li><i class="fa-solid fa-square-check"></i> Contado hasta 30 días</li>
+                        <li><i class="fa-solid fa-square-check"></i> 3, 6, 12, 24, 36 o 48 cuotas mensuales</li>
+                    </ul>
+                    <p>Nos adaptamos a tu ritmo. Tú eliges cómo pagar, nosotros mantenemos el mismo beneficio para ti.</p>
+                    <p><strong>¡Empieza hoy!</strong></p>
+                    <button id="btn-calcular-cuotas" class="btn-primario">Calcular cuotas referenciales</button>
+                </div>
+            </div>
+            <!-- Vista 2: Financiamiento por Lote (Inicialmente oculta) -->
+            <div id="vista-financiamiento-lote" class="container hidden">
+                <div class="financiamiento-lote-contenido">
+                    <div class="header-financiamiento">
+                        <img src="images/logo.png" alt="Logo Terrazas del Sol" class="logo-financiamiento">
+                        <h2>Financiamiento por lote</h2>
+                        <a href="#" class="btn-volver">Volver →</a>
+                    </div>
+                    <div class="opciones-cuotas">
+                        <button class="btn-cuota">CONTADO <strong>hasta 30 días</strong></button><div class="detalle-cuota"><span>Separa desde S/. 1,000.00</span> - <span>Dcto. S/. 5,500.00</span></div>
+                        <button class="btn-cuota">3 CUOTAS MENSUALES</button><div class="detalle-cuota"><span>Separa desde S/. 1,000.00</span> - <span>Dcto. S/. 5,500.00</span></div>
+                        <button class="btn-cuota">6 CUOTAS MENSUALES</button><div class="detalle-cuota"><span>Separa desde S/. 1,000.00</span> - <span>Dcto. S/. 5,500.00</span></div>
+                        <button class="btn-cuota">12 CUOTAS MENSUALES</button><div class="detalle-cuota"><span>Separa desde S/. 1,000.00</span> - <span>Dcto. S/. 5,500.00</span></div>
+                        <button class="btn-cuota">24 CUOTAS MENSUALES</button><div class="detalle-cuota"><span>Separa desde S/. 1,000.00</span> - <span>Dcto. S/. 5,500.00</span></div>
+                        <button class="btn-cuota">36 CUOTAS MENSUALES</button><div class="detalle-cuota"><span>Separa desde S/. 1,000.00</span> - <span>Dcto. S/. 5,500.00</span></div>
+                        <button class="btn-cuota">48 CUOTAS MENSUALES</button><div class="detalle-cuota"><span>Separa desde S/. 1,000.00</span> - <span>Dcto. S/. 5,500.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE OFICINAS -->
+        <section id="oficinas" class="container">
+            <div class="columna-texto">
+                <h2>Nuestras Oficinas</h2>
+                <div class="info-oficina">
+                    <i class="fa-solid fa-map-pin"></i>
+                    <h3>Jr. Junín N° 855</h3>
+                </div>
+                <p>Encuéntranos de lunes a viernes:</p>
+                <ul>
+                    <li>8 a. m.–1 p. m.</li>
+                    <li>4–8 p. m.</li>
+                </ul>
+                <p>y los sábados:</p>
+                <ul>
+                    <li>8 a. m.–3 p. m</li>
+                </ul>
+            </div>
+            <div class="columna-mapa-oficina">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.7301325002645!2d-78.52236428255618!3d-7.157167399999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91b25bb36dc1c53b%3A0x97ebf8e1b6212fb6!2sInmobiliaria%20Cabrera!5e0!3m2!1ses!2spe!4v1754087220366!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
 </main>
     <!-- Enlazamos nuestro archivo de JavaScript al final -->
     <script src="js/script.js"></script>
