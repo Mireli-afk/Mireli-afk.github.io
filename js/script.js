@@ -68,17 +68,3 @@ function calcularPrecio() {
 // Hacemos que la función se ejecute cada vez que el usuario escribe en los campos
 inputManzana.addEventListener('input', calcularPrecio);
 inputLote.addEventListener('input', calcularPrecio);
-
-// --- LÓGICA PARA CAMBIAR VISTAS DE FINANCIAMIENTO ---
-const btnCalcularCuotas = document.getElementById('btn-calcular-cuotas');
-const vistaOpcionesPago = document.getElementById('vista-opciones-pago');
-const vistaFinanciamientoLote = document.getElementById('vista-financiamiento-lote');
-
-// Añadimos un "event listener" al botón
-btnCalcularCuotas.addEventListener('click', function() {
-    // Ocultamos la primera vista
-    vistaOpcionesPago.classList.add('hidden');
-    
-    // Mostramos la segunda vista
-    vistaFinanciamientoLote.classList.remove('hidden');
-});

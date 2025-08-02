@@ -353,10 +353,6 @@ nav a i {
     border-radius: 8px;
 }
 
-/* --- CLASE UTILITARIA PARA OCULTAR --- */
-.hidden {
-    display: none !important;
-}
 
 /* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
 @media (max-width: 768px) {
