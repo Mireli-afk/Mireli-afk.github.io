@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Financiamiento - Terrazas del Sol</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Ícono flotante de WhatsApp -->
+    <a href="https://wa.me/51920334792" class="whatsapp-flotante" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <img src="images/logo-recortado.png" alt="Logo Terrazas del Sol" class="logo-financiamiento">
+        <h2>Financiamiento por lote</h2>
+        <a href="financiamiento.html" class="btn-volver">Volver →</a>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Columna del formulario -->
+            <div class="columna-formulario-calculadora">
+                
+                <form id="formulario-calculadora">
+                    <div class="campo-formulario">
+                        <label for="nombres">Nombres y apellidos:</label>
+                        <input type="text" id="nombres" placeholder="Ingresa tus datos" required>
+                    </div>
+
+                    <div class="grid-dos-columnas">
+                        <div class="campo-formulario">
+                            <label for="lote-select">Lote:</label>
+                            <select id="lote-select" required>
+                                <option value="">Seleccionar lote...</option>
+                                <!-- Opciones de lotes se llenarán con JS -->
+                            </select>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="fecha">Fecha:</label>
+                            <input type="text" id="fecha" readonly>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="descuento-interes">Descuento o Interés:</label>
+                            <input type="text" id="descuento-interes" readonly>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="monto-separacion">Monto para separar:</label>
+                            <input type="number" id="monto-separacion" min="1000" step="100" required>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="precio-sin-mod">Precio sin modificación:</label>
+                            <input type="text" id="precio-sin-mod" readonly>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="precio-modificado">Precio modificado:</label>
+                            <input type="text" id="precio-modificado" readonly>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="num-cuotas">Nº Cuotas:</label>
+                            <input type="text" id="num-cuotas" readonly>
+                        </div>
+                        <div class="campo-formulario">
+                            <label for="precio-estimado">Precio estimado a pagar (cuota):</label>
+                            <input type="text" id="precio-estimado" readonly>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primario btn-separar">Generar PDF de Separación</button>
+                    <p class="nota-pdf">*Solo se generará un PDF para descargar.</p>
+                </form>
+            </div>
+            <!-- Columna del mapa -->
+            <div class="columna-imagen">
+                <img src="images/mapa-lotes.jpg" alt="Mapa de lotes del proyecto">
+            </div>
+        </div>
+    </main>
+
+    <!-- Librería jsPDF para generar el PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Nuestro script de la calculadora -->
+    <script src="js/calculadora.js"></script>
+</body>
+</html>
