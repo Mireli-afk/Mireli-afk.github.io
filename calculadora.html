@@ -74,15 +74,14 @@
             </div>
             <!-- Columna del mapa -->
             <div class="columna-imagen">
-                <img src="images/mapa-lotes.png" alt="Mapa de lotes del proyecto">
+                <img src="images/mapa-lotes.png" alt="Mapa de lotes del proyecto" loading="lazy">
             </div>
         </div>
-    </main>
-
-    <!-- Librería jsPDF para generar el PDF -->
+</main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <!-- Nuestro script de la calculadora -->
+    <!-- Cargamos primero la base de datos -->
+    <script src="js/datos.js"></script>
+    <!-- Luego el script de la calculadora -->
     <script src="js/calculadora.js"></script>
 </body>
 </html>

@@ -98,7 +98,7 @@
                     <iframe src="https://www.youtube.com/embed/YeG399HGs6A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="mapa-ubicacion">
-                     <!-- Mapa interactivo de Google Maps -->
+                    <!-- Mapa interactivo de Google Maps -->
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.140532164024!2d-78.47088742539646!3d-7.224807170944951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91b2433ecd6775e7%3A0x5e99344125715f80!2sCONDOMINIO%20TERRAZAS%20DEL%20SOL!5e0!3m2!1ses!2spe!4v1753676592617!5m2!1ses!2spe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
@@ -124,7 +124,7 @@
         </div>
         <div class="columna-imagen">
             <!-- Asegúrate de tener esta imagen en tu carpeta /images/ -->
-            <img src="images/mapa-lotes.png" alt="Mapa de lotes del proyecto">
+            <img src="images/mapa-lotes.png" alt="Mapa de lotes del proyecto" loading="lazy">
         </div>
     </section>
 
@@ -133,7 +133,7 @@
             <!-- Vista 1: Opciones de Pago -->
             <div id="vista-opciones-pago" class="container">
                 <div class="columna-imagen">
-                    <img src="images/financiamiento.png" alt="Plano de lotes con sol">
+                    <img src="images/financiamiento.png" alt="Plano de lotes con sol" loading="lazy">
                 </div>
                 <div class="columna-texto">
                     <h2>Opciones de pago disponibles</h2>
@@ -177,7 +177,8 @@
 </body>
 
 </main>
-    <!-- Enlazamos nuestro archivo de JavaScript al final -->
+    <!-- Cargamos primero la base de datos -->
+    <script src="js/datos.js"></script>
+    <!-- Luego el script que la utiliza -->
     <script src="js/script.js"></script>
-</body>
 </html>
