@@ -1,65 +1,104 @@
-/* --- ESTILOS GENERALES --- */
+/* --- ESTILOS GENERALES Y TIPOGRAFÍA --- */
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #4A6B8A;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #3a566f;
 }
 
 /* --- HEADER Y NAVEGACIÓN --- */
 header {
     background-color: #4A6B8A;
     color: white;
-    padding: 15px 30px;
+    padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 nav {
-    background-color: rgba(74, 107, 138, 0.9);
-    padding: 15px 30px;
+    background-color: rgba(74, 107, 138, 0.95);
+    padding: 15px 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
 }
-
 header img.logo { 
     height: 60px;
     width: auto;
 }
-
 header h1 { 
     font-size: 2em; 
     margin: 0; 
 }
-
-header .btn-volver { 
-    color: white; 
-    text-decoration: none; 
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    padding: 10px 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-nav ul li:last-child { 
-    border-right: none; 
-}
-
+header .btn-volver,
 nav a { 
     color: white; 
     text-decoration: none; 
-    font-weight: bold; 
+}
+nav ul { 
+    display: flex; 
+    justify-content: center; 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* --- NUEVOS ESTILOS CON ANIMACIÓN PARA LA NAVEGACIÓN --- */
+nav a { 
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+nav a:hover {
+    text-decoration: none; /* Quitamos el subrayado por defecto en el hover */
+    transform: translateY(-5px);
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 70%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+nav a:hover::after {
+    transform: translateY(0);
+    opacity: 1;
+}
+nav a i {
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
 }
 
 /* --- CONTENEDOR PRINCIPAL Y COLUMNAS --- */
@@ -67,213 +106,37 @@ nav a {
     display: flex;
     gap: 40px;
     align-items: flex-start;
-    padding: 40px;
+    padding: 50px;
     background-color: white;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 25px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     max-width: 1200px;
 }
-
-.columna-imagen img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
+.columna-texto, .columna-formulario, .columna-imagen, .columna-video, .columna-multimedia, .columna-formulario-calculadora { 
+    flex: 1; 
 }
 
-/* --- SECCIÓN DE BENEFICIOS --- */
-.columna-video {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* Proporción 16:9 para el video */
-    height: 0;
-    overflow: hidden;
-    border-radius: 8px; /* Bordes redondeados para el contenedor del video */
-    
-    /* CAMBIO CLAVE: El video será un poco más grande que el texto */
-    flex: 1.2; 
-}
+/* --- ESTILOS DE SECCIONES (Beneficios, Ubicación, etc.) --- */
+.columna-video { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; flex: 1.2; }
+.columna-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.titulo-beneficios { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.titulo-beneficios > i { font-size: 32px; color: #4A6B8A; background-color: #f0f0f0; padding: 12px; border-radius: 50%; line-height: 1; width: 32px; text-align: center; }
+#beneficios h2, #ubicacion h2, #cotizacion h2, #financiamiento h2, #oficinas h2 { margin: 0; }
+#beneficios ul { padding-left: 20px; }
+.columna-multimedia { flex: 1.5; display: flex; flex-direction: column; gap: 20px; }
+.mini-video { width: 100%; padding-bottom: 56.25%; height: 0; position: relative; }
+.mini-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; }
+.mapa-ubicacion iframe { width: 100%; height: 300px; border: none; border-radius: 8px; }
+.guia-llegada { margin-top: 30px; padding-left: 20px; display: flex; flex-direction: column; align-items: flex-start; }
+.guia-llegada .punto, .guia-llegada .transporte { display: flex; align-items: center; gap: 20px; }
+.guia-llegada i { font-size: 28px; color: #333; width: 30px; text-align: center; }
+.guia-llegada .linea-punteada { border-left: 2px dashed #ccc; height: 50px; margin-left: 14px; }
+.guia-llegada span { font-weight: bold; }
+.guia-llegada p { margin: 0; line-height: 1.5; }
+.columna-imagen img { width: 100%; height: auto; border-radius: 8px; display: block; }
 
-.columna-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.columna-texto {
-    /* CAMBIO CLAVE: Le asignamos su proporción base */
-    flex: 1;
-}
-
-.titulo-beneficios {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-/* NUEVA REGLA: Reemplaza a .icono-beneficios para usar el ícono de estrella */
-.titulo-beneficios > i {
-    font-size: 32px;
-    color: #4A6B8A;
-    background-color: #f0f0f0;
-    padding: 12px;
-    border-radius: 50%;
-    line-height: 1;
-    width: 32px;
-    text-align: center;
-}
-
-#beneficios h2 {
-    margin: 0; /* Ajuste para alinear bien con el ícono */
-}
-
-#beneficios ul {
-    padding-left: 20px;
-}
-
-/* --- SECCIÓN DE UBICACIÓN  */
-.columna-multimedia {
-    flex: 1.5;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.mini-video {
-    width: 100%;
-    padding-bottom: 56.25%; /* Mantiene la proporción 16:9 */
-    height: 0;
-    position: relative;
-}
-.mini-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-}
-.mapa-ubicacion iframe {
-    width: 100%;
-    height: 300px; /* Dale una altura fija, puedes ajustarla */
-    border: none; /* Quitamos el borde por defecto del iframe */
-    border-radius: 8px; /* Mantenemos los bordes redondeados */
-}
-.guia-llegada {
-    margin-top: 30px;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.guia-llegada .punto, .guia-llegada .transporte {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-.guia-llegada i {
-    font-size: 28px;
-    color: #333;
-    width: 30px;
-    text-align: center;
-}
-.guia-llegada .linea-punteada {
-    border-left: 2px dashed #ccc;
-    height: 50px;
-    margin-left: 14px; /* Centra la línea con los íconos */
-}
-.guia-llegada span {
-    font-weight: bold;
-}
-.guia-llegada p {
-    margin: 0;
-    line-height: 1.5;
-}
-
-/* --- SECCIÓN DE COTIZACIÓN --- */
-.columna-formulario {
-    flex: 1;
-}
-.columna-imagen {
-    flex: 1;
-}
-.columna-formulario h2 { 
-    margin-top: 0;
-}
-.columna-formulario form label {
-    display: block;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-.columna-formulario form input {
-    width: 90%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    font-size: 1em;
-}
-.precio-display {
-    margin-top: 25px;
-    font-size: 1.5em;
-}
-.precio-display span {
-    display: inline-block;
-    min-width: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    text-align: center;
-    font-weight: bold;
-    color: #333;
-}
-
-/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
-.whatsapp-flotante {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 30px;
-    background-color: #25D366;
-    border-radius: 50%;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* --- ESTILOS PARA LOS ÍCONOS DE FONT AWESOME --- */
-nav a i {
-    margin-right: 8px;
-    width: 20px;
-    text-align: center;
-}
-.whatsapp-flotante i {
-    font-size: 38px;
-    color: white;
-}
-.whatsapp-flotante img {
-    display: none;
-}
-
-/* --- SECCIÓN DE FINANCIAMIENTO --- */
-.lista-checks {
-    list-style: none;
-    padding-left: 0;
-}
-.lista-checks li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-.lista-checks i {
-    color: #28a745; /* Verde check */
-    margin-right: 10px;
-}
+/* --- BOTONES Y ELEMENTOS INTERACTIVOS --- */
 .btn-primario {
     background-color: #4A6B8A;
     color: white;
@@ -283,156 +146,82 @@ nav a i {
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: inline-block;
 }
 .btn-primario:hover {
     background-color: #3a566f;
-}
-
-/* Vista 2: Financiamiento por Lote */
-#vista-financiamiento-lote {
-    background-color: #f0f4f7;
-    flex-direction: column;
-}
-.financiamiento-lote-contenido {
-    width: 100%;
-}
-.header-financiamiento {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-}
-.logo-financiamiento {
-    height: 40px;
-}
-.opciones-cuotas {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 15px 20px;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 .btn-cuota {
     background-color: white;
-    border: 1px solid #ccc;
+    border: 2px solid #ddd;
     border-radius: 30px;
     padding: 12px 25px;
     font-size: 0.9em;
     cursor: pointer;
     text-align: center;
+    transition: all 0.3s ease;
 }
-.detalle-cuota {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
+.btn-cuota:hover {
+    border-color: #4A6B8A;
+    background-color: #4A6B8A;
+    color: white;
 }
+.detalle-cuota { border-bottom: 1px solid #ddd; padding-bottom: 15px; }
+.whatsapp-flotante { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: #25D366; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 100; display: flex; justify-content: center; align-items: center; transition: transform 0.3s ease; }
+.whatsapp-flotante:hover { transform: scale(1.1); }
 
-/* --- SECCIÓN DE OFICINAS --- */
-.info-oficina {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 20px 0;
+/* --- ESTILOS DE FORMULARIOS --- */
+.columna-formulario-calculadora { flex: 1.5; }
+.grid-dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; }
+.campo-formulario { display: flex; flex-direction: column; }
+.campo-formulario label { font-weight: bold; margin-bottom: 5px; font-size: 0.9em; }
+.campo-formulario input,
+.campo-formulario select {
+    padding: 12px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
 }
-.info-oficina i {
-    font-size: 3em;
+.campo-formulario input:focus,
+.campo-formulario select:focus {
+    border-color: #4A6B8A;
+    outline: none;
 }
-.info-oficina h3 {
-    margin: 0;
-    font-size: 1.5em;
-}
-.columna-mapa-oficina {
-    flex: 1.5;
-}
-.columna-mapa-oficina iframe {
-    width: 100%;
-    height: 100%;
-    min-height: 300px;
-    border: none;
-    border-radius: 8px;
-}
+.campo-formulario input:read-only { background-color: #f5f5f5; cursor: not-allowed; }
+.nota-pdf { text-align: center; font-size: 0.8em; color: #888; margin-top: 10px; }
 
+/* --- ESTILOS DE FINANCIAMIENTO Y OFICINAS --- */
+.lista-checks { list-style: none; padding-left: 0; }
+.lista-checks li { margin-bottom: 10px; font-size: 1.1em; }
+.lista-checks i { color: #28a745; margin-right: 10px; }
+#vista-financiamiento-lote { background-color: #f0f4f7; flex-direction: column; }
+.financiamiento-lote-contenido { width: 100%; }
+.header-financiamiento { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 20px; margin-bottom: 30px; }
+.logo-financiamiento { height: 40px; }
+.opciones-cuotas { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 15px 20px; }
+.info-oficina { display: flex; align-items: center; gap: 15px; margin: 20px 0; }
+.info-oficina i { font-size: 3em; }
+.info-oficina h3 { margin: 0; font-size: 1.5em; }
+.columna-mapa-oficina { flex: 1.5; }
+.columna-mapa-oficina iframe { width: 100%; height: 100%; min-height: 300px; border: none; border-radius: 8px; }
+
+/* --- ÍCONOS FONT AWESOME (YA INTEGRADO EN nav a) --- */
+.whatsapp-flotante i { font-size: 38px; color: white; }
 
 /* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
 @media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-    header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    header h1 {
-        font-size: 1.5em;
-    }
-    header .btn-volver {
-        display: none;
-    }
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-    }
-    nav ul li {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        text-align: center;
-    }
-    nav ul li:last-child {
-        border-bottom: none;
-    }
-    .container {
-        flex-direction: column;
-        padding: 20px;
-        margin: 10px;
-    }
-    .columna-video {
-        flex: 1;
-        padding-bottom: 56.25%;
-        margin-bottom: 20px;
-    }
-    .columna-formulario form input {
-        width: 95%;
-    }
-}
-
-/* --- ESTILOS PARA LA CALCULADORA --- */
-.columna-formulario-calculadora {
-    flex: 1.5; /* Dar más espacio al formulario */
-}
-.grid-dos-columnas {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px 20px;
-}
-.campo-formulario {
-    display: flex;
-    flex-direction: column;
-}
-.campo-formulario label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 0.9em;
-}
-.campo-formulario input,
-.campo-formulario select {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    font-size: 1em;
-}
-.campo-formulario input:read-only {
-    background-color: #f0f0f0;
-    cursor: not-allowed;
-}
-.btn-separar {
-    width: 100%;
-    margin-top: 20px;
-}
-.nota-pdf {
-    text-align: center;
-    font-size: 0.8em;
-    color: #888;
-    margin-top: 10px;
+    body { font-size: 14px; }
+    header, nav { padding: 15px 20px; }
+    header { flex-direction: column; gap: 10px; text-align: center; }
+    header h1 { font-size: 1.5em; }
+    header .btn-volver { display: none; }
+    nav ul { flex-wrap: wrap; justify-content: center; } 
+    .container { flex-direction: column; padding: 25px; margin: 10px; }
+    .columna-video { margin-bottom: 20px; }
+    .grid-dos-columnas { grid-template-columns: 1fr; }
 }
