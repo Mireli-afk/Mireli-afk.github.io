@@ -17,7 +17,7 @@ header {
 
 nav {
     background-color: rgba(74, 107, 138, 0.9);
-    padding: 15px 30px;
+    padding: 10px 30px; /* Reducimos un poco el padding vertical para la animación */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -34,7 +34,8 @@ header h1 {
     margin: 0; 
 }
 
-header .btn-volver { 
+header .btn-volver,
+nav a { 
     color: white; 
     text-decoration: none; 
 }
@@ -47,19 +48,56 @@ nav ul {
     padding: 0;
 }
 
+/* --- ESTILOS CON ANIMACIÓN PARA LA NAVEGACIÓN --- */
+/* Eliminamos el padding y borde de 'li' para controlar todo desde 'a' */
 nav ul li {
-    padding: 10px 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-nav ul li:last-child { 
-    border-right: none; 
+nav ul li:last-child {
+    border-right: none;
 }
 
 nav a { 
-    color: white; 
-    text-decoration: none; 
-    font-weight: bold; 
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px; /* Espaciado interno generoso para el efecto */
+    position: relative;
+    overflow: hidden; /* Oculta la línea cuando está fuera */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición suave */
+}
+
+/* El efecto al pasar el ratón */
+nav a:hover {
+    text-decoration: none; /* Quitamos el subrayado por defecto */
+    transform: translateY(-4px); /* Mueve el enlace 4px hacia arriba */
+}
+
+/* La línea decorativa que aparecerá por debajo */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* La centramos */
+    transform: translateX(-50%); /* Ajuste fino para el centrado */
+    width: 0; /* Empieza sin ancho */
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animación de crecimiento */
+}
+
+/* El estado de la línea cuando pasas el ratón por el enlace */
+nav a:hover::after {
+    width: 70%; /* La línea crece hasta el 70% del ancho */
+}
+
+/* Estilo para el ícono dentro del enlace */
+nav a i {
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
 }
 
 /* --- CONTENEDOR PRINCIPAL Y COLUMNAS --- */
