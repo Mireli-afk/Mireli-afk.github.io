@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loteSelect.appendChild(option);
         }
     } else {
-        console.error("La base de datos de lotes (datos.js) no se ha cargado.");
+        console.error("La base de datos de lotes (datos.js) no se ha cargado. Asegúrate de que el script se está importando correctamente en calculadora.html.");
     }
 
     // 3. Autocompletar campos fijos del formulario
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function recalcularTodo() {
         const loteKey = loteSelect.value;
         if (!loteKey || typeof datosLotes === 'undefined') {
-             // Limpiar campos si no hay lote seleccionado
             precioSinModInput.value = '';
             precioModificadoInput.value = '';
             precioEstimadoInput.value = '';
@@ -74,9 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const infoLote = datosLotes[loteKey];
         const precioBase = infoLote.precio;
-        const montoSeparacion = parseFloat(montoSeparacionInput.value);
+        const montoSeparacion = parseFloat(montoSeparacionInput.value) || 0;
 
-        // Validar que el monto de separación no sea menor al mínimo
         if (montoSeparacion < planSeleccionado.separacionMinima) {
             montoSeparacionInput.style.borderColor = 'red';
         } else {
@@ -104,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
         precioEstimadoInput.value = planSeleccionado.cuotas > 1 ? formatoMoneda(cuotaMensual) : "Pago único";
     }
 
-    // --- FUNCIÓN PARA GENERAR Y ENVIAR ENLACE DE WHATSAPP ---
-    function generarEnlaceWhatsapp(e) {
+    // --- FUNCIÓN PARA GENERAR Y DESCARGAR LA COTIZACIÓN EN PDF ---
+    function descargarCotizacionPDF(e) {
         e.preventDefault();
 
         // 1. Recopilar datos
@@ -121,12 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
             cuotaMensual: precioEstimadoInput.value
         };
 
+        // 2. Validar campos
         if (!datos.nombres.trim()) {
-            alert("Por favor, ingresa tu nombre y apellidos.");
+            alert("Por favor, ingresa tu nombre y apellidos para generar la cotización.");
             return;
         }
         if (!loteSelect.value) {
-            alert("Por favor, selecciona un lote.");
+            alert("Por favor, selecciona un lote para generar la cotización.");
             return;
         }
         if (parseFloat(montoSeparacionInput.value) < planSeleccionado.separacionMinima) {
@@ -134,34 +133,41 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // 2. Codificar datos para la URL
-        const datosJSON = JSON.stringify(datos);
-        const datosCodificados = btoa(datosJSON);
+        // 3. Crear el documento PDF
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        doc.setFontSize(20);
+        doc.text("Cotización Referencial - Terrazas del Sol", 105, 20, null, null, "center");
+        doc.setFontSize(12);
+        doc.text(`Fecha: ${datos.fecha}`, 15, 40);
+        doc.text(`Cliente: ${datos.nombres}`, 15, 50);
+        doc.text(`Lote seleccionado: ${datos.lote}`, 15, 60);
+        doc.line(15, 65, 195, 65);
+        
+        doc.setFontSize(14);
+        doc.text("Detalle del Financiamiento", 15, 75);
+        doc.setFontSize(12);
+        doc.text(`- Plan de pago: ${datos.plan}`, 15, 85);
+        doc.text(`- Precio de lista: ${datos.precioOriginal}`, 15, 95);
+        doc.text(`- Monto de separación: ${datos.montoSeparacion}`, 15, 105);
+        doc.text(`- Precio final (con dcto./interés): ${datos.precioFinal}`, 15, 115);
+        doc.text(`- Número de cuotas: ${datos.numCuotas}`, 15, 125);
+        doc.text(`- Monto por cuota: ${datos.cuotaMensual}`, 15, 135);
 
-        // 3. Crear URL de la cotización online
-        const urlCotizacion = `https://mireli-afk.github.io/cotizacion.html?data=${datosCodificados}`;
-
-        // 4. Crear mensaje para WhatsApp
-        const mensajeTexto = encodeURIComponent(
-`Hola, estoy interesado/a en separar un lote.
-Aquí está el enlace a mi cotización personalizada y segura:
-
-${urlCotizacion}
-
-Espero su pronta respuesta. ¡Gracias!`
-        );
-
-        // 5. Abrir WhatsApp
-        const numeroWhatsapp = "51954742266";
-        const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${mensajeTexto}`;
-        window.open(urlWhatsapp, '_blank');
+        doc.setFontSize(10);
+        doc.text("Este documento es una cotización referencial y no constituye un contrato.", 105, 160, null, null, "center");
+        
+        // 4. Guardar y descargar el PDF
+        const nombreArchivo = `cotizacion_terrazas_del_sol_${datos.nombres.replace(/\s/g, '_')}.pdf`;
+        doc.save(nombreArchivo);
     }
 
     // --- EVENT LISTENERS ---
     loteSelect.addEventListener('change', recalcularTodo);
     montoSeparacionInput.addEventListener('input', recalcularTodo);
-    form.addEventListener('submit', generarEnlaceWhatsapp);
+    form.addEventListener('submit', descargarCotizacionPDF);
 
-    // Llamada inicial para limpiar los campos de precios
+    // Llamada inicial para limpiar/calcular campos al cargar la página
     recalcularTodo();
 });
