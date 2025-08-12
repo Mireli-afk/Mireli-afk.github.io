@@ -1,56 +1,70 @@
 // Espera a que todo el contenido de la página esté cargado
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- Obtenemos los elementos del HTML con los que vamos a trabajar ---
+    // --- CÓDIGO PARA LA CALCULADORA DE PLANOS Y PRECIOS (SOLO EN INDEX.HTML) ---
+
+    // Primero, buscamos los elementos del formulario.
     const inputManzana = document.getElementById('manzana');
     const inputLote = document.getElementById('lote');
     const displayPrecio = document.getElementById('precio-final');
 
-    // --- Función para formatear un número a moneda local (Soles) ---
-    const formatoMoneda = (valor) => new Intl.NumberFormat('es-PE', {
-        style: 'currency',
-        currency: 'PEN'
-    }).format(valor);
+    // Esta función solo se ejecutará si los 3 elementos de arriba existen.
+    if (inputManzana && inputLote && displayPrecio) {
 
-    // --- Función principal para buscar y mostrar el precio del lote ---
-    function calcularPrecio() {
-        // 1. Validamos que los elementos del formulario existan para evitar errores
-        if (!inputManzana || !inputLote || !displayPrecio) {
-            console.error("No se encontraron los elementos del formulario en la página.");
-            return;
+        // Función para formatear un número a moneda local (Soles)
+        const formatoMoneda = (valor) => new Intl.NumberFormat('es-PE', {
+            style: 'currency',
+            currency: 'PEN'
+        }).format(valor);
+
+        // Función principal para buscar y mostrar el precio del lote
+        function calcularPrecio() {
+            const manzana = inputManzana.value.trim().toUpperCase();
+            const lote = inputLote.value.trim();
+
+            if (!manzana || !lote) {
+                displayPrecio.textContent = '-';
+                return;
+            }
+
+            const claveLote = `${manzana}-${lote}`;
+
+            // Verificamos que la base de datos 'datosLotes' exista (cargada desde datos.js)
+            if (typeof datosLotes !== 'undefined' && datosLotes[claveLote]) {
+                const precioTotal = datosLotes[claveLote].precio;
+                displayPrecio.textContent = formatoMoneda(precioTotal);
+            } else {
+                displayPrecio.textContent = 'Lote no disponible';
+            }
         }
 
-        // 2. Obtenemos y limpiamos los valores ingresados por el usuario
-        const manzana = inputManzana.value.trim().toUpperCase(); // Convertimos a mayúsculas
-        const lote = inputLote.value.trim();
-
-        // Si alguno de los campos está vacío, reseteamos el display
-        if (!manzana || !lote) {
-            displayPrecio.textContent = '-';
-            return;
-        }
-
-        // 3. Creamos la clave para buscar en la base de datos (ej: "A-20")
-        const claveLote = `${manzana}-${lote}`;
-
-        // 4. Verificamos que la base de datos 'datosLotes' exista (cargada desde datos.js)
-        if (typeof datosLotes !== 'undefined' && datosLotes[claveLote]) {
-            // Si el lote existe, obtenemos su precio de lista
-            const precioTotal = datosLotes[claveLote].precio;
-            
-            // Mostramos el precio formateado como moneda
-            displayPrecio.textContent = formatoMoneda(precioTotal);
-        } else {
-            // Si el lote no se encuentra en la base de datos
-            displayPrecio.textContent = 'Lote no disponible';
-        }
-    }
-
-    // --- Asignamos los "Event Listeners" ---
-    // Hacemos que la función 'calcularPrecio' se ejecute cada vez que el usuario escribe algo
-    // en los campos de Manzana o Lote.
-    if (inputManzana && inputLote) {
+        // Asignamos los "Event Listeners" para que la calculadora funcione en tiempo real
         inputManzana.addEventListener('input', calcularPrecio);
         inputLote.addEventListener('input', calcularPrecio);
     }
+
+
+    // --- CÓDIGO PARA EL MENÚ DE HAMBURGUESA (FUNCIONA EN TODAS LAS PÁGINAS) ---
+
+    const menuHamburguesa = document.querySelector('.menu-hamburguesa');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav a');
+
+    if (menuHamburguesa && nav) {
+        // Evento para abrir/cerrar el menú al hacer clic en el botón
+        menuHamburguesa.addEventListener('click', () => {
+            nav.classList.toggle('activo');
+        });
+    }
+
+    // Evento para cerrar el menú automáticamente al hacer clic en un enlace
+    // (muy útil para la navegación en la misma página en móviles)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav.classList.contains('activo')) {
+                nav.classList.remove('activo');
+            }
+        });
+    });
+    
 });

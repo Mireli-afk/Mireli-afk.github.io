@@ -1,15 +1,17 @@
-/* --- ESTILOS GENERALES --- */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f9f9f9;
-    color: #333; /* Añadido para un mejor contraste que el negro puro */
-    
-    /* --- AQUÍ EMPIEZAN LOS NUEVOS ESTILOS DE ESPACIADO --- */
-    line-height: 1.6; /* Interlineado base para toda la página */
+/* --- ESTILOS GENERALES Y TIPOGRAFÍA --- */
+/* Usamos 'box-sizing' para un manejo más intuitivo de anchos y paddings */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-/* Espaciado para títulos y párrafos para que "respiren" */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
 h1, h2, h3 {
     line-height: 1.3;
     margin-top: 1.2em;
@@ -18,20 +20,19 @@ h1, h2, h3 {
 
 p {
     margin-top: 0;
-    margin-bottom: 1em; /* Espacio consistente debajo de los párrafos */
+    margin-bottom: 1em;
 }
 
-/* Espaciado para los elementos de las listas */
 ul {
     padding-left: 20px;
 }
 
 li {
     margin-bottom: 0.5em;
-    padding-left: 5px; /* Pequeño espacio entre la viñeta y el texto */
+    padding-left: 5px;
 }
 
-/* --- HEADER Y NAVEGACIÓN --- */
+/* --- HEADER --- */
 header {
     background-color: #4A6B8A;
     color: white;
@@ -39,33 +40,32 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 1001;
 }
-
-nav {
-    background-color: rgba(74, 107, 138, 0.9);
-    padding: 10px 30px; /* Reducimos un poco el padding vertical para la animación */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-}
-
 header img.logo { 
     height: 60px;
     width: auto;
 }
-
 header h1 { 
     font-size: 2em; 
     margin: 0; 
 }
-
-header .btn-volver,
-nav a { 
+header .btn-volver { 
     color: white; 
     text-decoration: none; 
 }
 
+/* --- NAVEGACIÓN (STICKY & ANIMADA) --- */
+nav {
+    background-color: rgba(74, 107, 138, 0.95);
+    padding: 10px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Soporte para Safari */
+}
 nav ul {
     display: flex;
     justify-content: center;
@@ -73,72 +73,76 @@ nav ul {
     margin: 0;
     padding: 0;
 }
-
-/* --- ESTILOS CON ANIMACIÓN PARA LA NAVEGACIÓN --- */
-/* Eliminamos el padding y borde de 'li' para controlar todo desde 'a' */
 nav ul li {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
-
 nav ul li:last-child {
     border-right: none;
 }
-
 nav a { 
+    color: white; 
+    text-decoration: none; 
     font-weight: bold;
     display: flex;
     align-items: center;
-    padding: 15px 25px; /* Espaciado interno generoso para el efecto */
+    padding: 15px 25px;
     position: relative;
-    overflow: hidden; /* Oculta la línea cuando está fuera */
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición suave */
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
-/* El efecto al pasar el ratón */
 nav a:hover {
-    text-decoration: none; /* Quitamos el subrayado por defecto */
-    transform: translateY(-4px); /* Mueve el enlace 4px hacia arriba */
+    text-decoration: none;
+    transform: translateY(-4px);
 }
-
-/* La línea decorativa que aparecerá por debajo */
 nav a::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 50%; /* La centramos */
-    transform: translateX(-50%); /* Ajuste fino para el centrado */
-    width: 0; /* Empieza sin ancho */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
     height: 3px;
     background-color: white;
     border-radius: 2px;
-    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animación de crecimiento */
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
-/* El estado de la línea cuando pasas el ratón por el enlace */
 nav a:hover::after {
-    width: 70%; /* La línea crece hasta el 70% del ancho */
+    width: 70%;
 }
-
-/* Estilo para el ícono dentro del enlace */
 nav a i {
     margin-right: 8px;
     width: 20px;
     text-align: center;
 }
 
-/* --- CONTENEDOR PRINCIPAL Y COLUMNAS --- */
+/* --- MENÚ DE HAMBURGUESA (SOLO PARA MÓVILES) --- */
+.menu-hamburguesa {
+    display: none;
+    font-size: 28px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* --- CONTENEDOR PRINCIPAL Y ANCLAJE --- */
+section[id] {
+    scroll-margin-top: 120px;
+}
 .container {
     display: flex;
     gap: 40px;
     align-items: flex-start;
     padding: 40px;
     background-color: white;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 25px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     max-width: 1200px;
 }
-
+.columna-texto, .columna-formulario, .columna-imagen, .columna-video, .columna-multimedia, .columna-formulario-calculadora { 
+    flex: 1; 
+}
 .columna-imagen img {
     width: 100%;
     height: auto;
@@ -146,378 +150,126 @@ nav a i {
     display: block;
 }
 
-/* SOLUCIÓN PARA EL ANCLAJE DE LA NAVEGACIÓN FIJA */
-section[id] {
-    scroll-margin-top: 100px;
-}
+/* --- ESTILOS DE SECCIONES ESPECÍFICAS --- */
+.columna-video { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; flex: 1.2; }
+.columna-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.titulo-beneficios { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.titulo-beneficios > i { font-size: 32px; color: #4A6B8A; background-color: #f0f0f0; padding: 12px; border-radius: 50%; line-height: 1; width: 32px; text-align: center; }
+.columna-multimedia { flex: 1.5; display: flex; flex-direction: column; gap: 20px; }
+.mini-video, .mapa-ubicacion iframe { border-radius: 8px; }
+.mini-video { width: 100%; padding-bottom: 56.25%; height: 0; position: relative; }
+.mini-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.mapa-ubicacion iframe { width: 100%; height: 300px; border: none; }
+.guia-llegada { margin-top: 30px; padding-left: 20px; display: flex; flex-direction: column; align-items: flex-start; }
+.guia-llegada .punto, .guia-llegada .transporte { display: flex; align-items: center; gap: 20px; }
+.guia-llegada i { font-size: 28px; color: #333; width: 30px; text-align: center; }
+.guia-llegada .linea-punteada { border-left: 2px dashed #ccc; height: 50px; margin-left: 14px; }
 
-/* --- SECCIÓN DE BENEFICIOS --- */
-.columna-video {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* Proporción 16:9 para el video */
-    height: 0;
-    overflow: hidden;
-    border-radius: 8px; /* Bordes redondeados para el contenedor del video */
-    
-    /* CAMBIO CLAVE: El video será un poco más grande que el texto */
-    flex: 1.2; 
-}
-
-.columna-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.columna-texto {
-    /* CAMBIO CLAVE: Le asignamos su proporción base */
-    flex: 1;
-}
-
-.titulo-beneficios {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-/* NUEVA REGLA: Reemplaza a .icono-beneficios para usar el ícono de estrella */
-.titulo-beneficios > i {
-    font-size: 32px;
-    color: #4A6B8A;
-    background-color: #f0f0f0;
-    padding: 12px;
-    border-radius: 50%;
-    line-height: 1;
-    width: 32px;
-    text-align: center;
-}
-
-#beneficios h2 {
-    margin: 0; /* Ajuste para alinear bien con el ícono */
-}
-
-#beneficios ul {
-    padding-left: 20px;
-}
-
-/* --- SECCIÓN DE UBICACIÓN  */
-.columna-multimedia {
-    flex: 1.5;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.mini-video {
-    width: 100%;
-    padding-bottom: 56.25%; /* Mantiene la proporción 16:9 */
-    height: 0;
-    position: relative;
-}
-.mini-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-}
-.mapa-ubicacion iframe {
-    width: 100%;
-    height: 300px; /* Dale una altura fija, puedes ajustarla */
-    border: none; /* Quitamos el borde por defecto del iframe */
-    border-radius: 8px; /* Mantenemos los bordes redondeados */
-}
-.guia-llegada {
-    margin-top: 30px;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.guia-llegada .punto, .guia-llegada .transporte {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-.guia-llegada i {
-    font-size: 28px;
-    color: #333;
-    width: 30px;
-    text-align: center;
-}
-.guia-llegada .linea-punteada {
-    border-left: 2px dashed #ccc;
-    height: 50px;
-    margin-left: 14px; /* Centra la línea con los íconos */
-}
-.guia-llegada span {
+/* --- BOTONES Y ELEMENTOS INTERACTIVOS --- */
+.btn-primario, .btn-cuota {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 30px;
     font-weight: bold;
-}
-.guia-llegada p {
-    margin: 0;
-    line-height: 1.5;
-}
-
-/* --- SECCIÓN DE COTIZACIÓN --- */
-.columna-formulario {
-    flex: 1;
-}
-.columna-imagen {
-    flex: 1;
-}
-.columna-formulario h2 { 
-    margin-top: 0;
-}
-.columna-formulario form label {
-    display: block;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-.columna-formulario form input {
-    width: 90%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    font-size: 1em;
-}
-.precio-display {
-    margin-top: 25px;
-    font-size: 1.5em;
-}
-.precio-display span {
-    display: inline-block;
-    min-width: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    text-align: center;
-    font-weight: bold;
-    color: #333;
-}
-
-/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
-.whatsapp-flotante {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 30px;
-    background-color: #25D366;
-    border-radius: 50%;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* --- ESTILOS PARA LOS ÍCONOS DE FONT AWESOME --- */
-nav a i {
-    margin-right: 8px;
-    width: 20px;
-    text-align: center;
-}
-.whatsapp-flotante i {
-    font-size: 38px;
-    color: white;
-}
-.whatsapp-flotante img {
-    display: none;
-}
-
-/* --- SECCIÓN DE FINANCIAMIENTO --- */
-.lista-checks {
-    list-style: none;
-    padding-left: 0;
-}
-.lista-checks li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-.lista-checks i {
-    color: #28a745; /* Verde check */
-    margin-right: 10px;
 }
 .btn-primario {
     background-color: #4A6B8A;
     color: white;
     border: none;
     padding: 15px 30px;
-    border-radius: 30px;
     font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: inline-block;
 }
 .btn-primario:hover {
     background-color: #3a566f;
-}
-
-/* Vista 2: Financiamiento por Lote */
-#vista-financiamiento-lote {
-    background-color: #f0f4f7;
-    flex-direction: column;
-}
-.financiamiento-lote-contenido {
-    width: 100%;
-}
-.header-financiamiento {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-}
-.logo-financiamiento {
-    height: 40px;
-}
-.opciones-cuotas {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 15px 20px;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 .btn-cuota {
     background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 30px;
+    border: 2px solid #ddd;
     padding: 12px 25px;
     font-size: 0.9em;
-    cursor: pointer;
     text-align: center;
 }
-.detalle-cuota {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
+.btn-cuota:hover {
+    border-color: #4A6B8A;
+    background-color: #4A6B8A;
+    color: white;
 }
+.detalle-cuota { border-bottom: 1px solid #ddd; padding-bottom: 15px; }
+.whatsapp-flotante { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: #25D366; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 100; display: flex; justify-content: center; align-items: center; transition: transform 0.3s ease; }
+.whatsapp-flotante:hover { transform: scale(1.1); }
+.whatsapp-flotante i { font-size: 38px; color: white; }
 
-/* --- SECCIÓN DE OFICINAS --- */
-.info-oficina {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 20px 0;
-}
-.info-oficina i {
-    font-size: 3em;
-}
-.info-oficina h3 {
-    margin: 0;
-    font-size: 1.5em;
-}
-.columna-mapa-oficina {
-    flex: 1.5;
-}
-.columna-mapa-oficina iframe {
-    width: 100%;
-    height: 100%;
-    min-height: 300px;
-    border: none;
-    border-radius: 8px;
-}
-
-/* NUEVOS ESTILOS PARA LA ESTRUCTURA UNIFICADA */
-
-.guia-llegada .direccion-oficina {
-    font-size: 1.5em;
-    margin: 0;
-}
-
-.guia-llegada .horarios-texto p {
-    margin: 0 0 5px 0; /* Ajustamos márgenes para el bloque de horarios */
-}
-
-.guia-llegada .horarios-texto ul {
-    margin: 0 0 10px 0;
-    padding-left: 20px; /* Mantenemos las viñetas */
-}
-
-
-/* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-    header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    header h1 {
-        font-size: 1.5em;
-    }
-    header .btn-volver {
-        display: none;
-    }
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-    }
-    nav ul li {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        text-align: center;
-    }
-    nav ul li:last-child {
-        border-bottom: none;
-    }
-    .container {
-        flex-direction: column;
-        padding: 20px;
-        margin: 10px;
-    }
-    .columna-video {
-        flex: 1;
-        padding-bottom: 56.25%;
-        margin-bottom: 20px;
-    }
-    .columna-formulario form input {
-        width: 95%;
-    }
-}
-
-/* --- ESTILOS PARA LA CALCULADORA --- */
-.columna-formulario-calculadora {
-    flex: 1.5; /* Dar más espacio al formulario */
-}
-.grid-dos-columnas {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px 20px;
-}
-.campo-formulario {
-    display: flex;
-    flex-direction: column;
-}
-.campo-formulario label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 0.9em;
-}
+/* --- ESTILOS DE FORMULARIOS --- */
+.columna-formulario-calculadora { flex: 1.5; }
+.grid-dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; }
+.campo-formulario { display: flex; flex-direction: column; }
+.campo-formulario label { font-weight: bold; margin-bottom: 5px; font-size: 0.9em; }
 .campo-formulario input,
 .campo-formulario select {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
+    padding: 12px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
     font-size: 1em;
+    transition: border-color 0.3s ease;
 }
-.campo-formulario input:read-only {
-    background-color: #f0f0f0;
-    cursor: not-allowed;
+.campo-formulario input:focus,
+.campo-formulario select:focus {
+    border-color: #4A6B8A;
+    outline: none;
 }
-.btn-separar {
-    width: 100%;
-    margin-top: 20px;
-}
-.nota-pdf {
-    text-align: center;
-    font-size: 0.8em;
-    color: #888;
-    margin-top: 10px;
+.campo-formulario input:read-only { background-color: #f5f5f5; cursor: not-allowed; }
+.nota-pdf { text-align: center; font-size: 0.8em; color: #888; margin-top: 10px; }
+
+/* --- ESTILOS DE FINANCIAMIENTO Y OFICINAS --- */
+.lista-checks { list-style: none; padding-left: 0; }
+.lista-checks li { margin-bottom: 10px; font-size: 1.1em; }
+.lista-checks i { color: #28a745; margin-right: 10px; }
+#vista-financiamiento-lote { background-color: #f0f4f7; flex-direction: column; }
+.financiamiento-lote-contenido { width: 100%; }
+.header-financiamiento { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 20px; margin-bottom: 30px; }
+.logo-financiamiento { height: 40px; }
+.opciones-cuotas { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 15px 20px; }
+.info-oficina { display: flex; align-items: center; gap: 15px; margin: 20px 0; }
+.info-oficina i { font-size: 3em; }
+.info-oficina h3 { margin: 0; font-size: 1.5em; }
+.columna-mapa-oficina { flex: 1.5; }
+.columna-mapa-oficina iframe { width: 100%; height: 100%; min-height: 300px; border: none; border-radius: 8px; }
+
+/* --- ESTILOS RESPONSIVOS PARA MÓVILES (CON MENÚ DE HAMBURGUESA) --- */
+@media (max-width: 992px) {
+    header { padding: 15px 20px; }
+    .menu-hamburguesa { display: block; }
+    header .btn-volver { display: none; }
+    header h1 { display: none; } /* Opcional: Oculta el título para dar espacio al logo y al menú */
+    
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(42, 64, 85, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-in-out;
+    }
+    nav.activo { transform: translateX(0); }
+    nav ul {
+        flex-direction: column;
+        height: 100%;
+        padding-top: 100px;
+    }
+    nav ul li { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+    nav a { padding: 20px; justify-content: center; font-size: 1.2em; }
+    nav a:hover { background-color: rgba(255, 255, 255, 0.1); transform: none; }
+    nav a::after { display: none; }
+
+    section[id] { scroll-margin-top: 80px; }
+    .container { flex-direction: column; padding: 25px; margin: 10px; }
+    .grid-dos-columnas { grid-template-columns: 1fr; }
 }
