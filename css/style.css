@@ -3,6 +3,32 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #f9f9f9;
+    color: #333; /* Añadido para un mejor contraste que el negro puro */
+    
+    /* --- AQUÍ EMPIEZAN LOS NUEVOS ESTILOS DE ESPACIADO --- */
+    line-height: 1.6; /* Interlineado base para toda la página */
+}
+
+/* Espaciado para títulos y párrafos para que "respiren" */
+h1, h2, h3 {
+    line-height: 1.3;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1em; /* Espacio consistente debajo de los párrafos */
+}
+
+/* Espaciado para los elementos de las listas */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 0.5em;
+    padding-left: 5px; /* Pequeño espacio entre la viñeta y el texto */
 }
 
 /* --- HEADER Y NAVEGACIÓN --- */
@@ -118,6 +144,11 @@ nav a i {
     height: auto;
     border-radius: 8px;
     display: block;
+}
+
+/* SOLUCIÓN PARA EL ANCLAJE DE LA NAVEGACIÓN FIJA */
+section[id] {
+    scroll-margin-top: 100px;
 }
 
 /* --- SECCIÓN DE BENEFICIOS --- */
@@ -389,6 +420,22 @@ nav a i {
     min-height: 300px;
     border: none;
     border-radius: 8px;
+}
+
+/* NUEVOS ESTILOS PARA LA ESTRUCTURA UNIFICADA */
+
+.guia-llegada .direccion-oficina {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.guia-llegada .horarios-texto p {
+    margin: 0 0 5px 0; /* Ajustamos márgenes para el bloque de horarios */
+}
+
+.guia-llegada .horarios-texto ul {
+    margin: 0 0 10px 0;
+    padding-left: 20px; /* Mantenemos las viñetas */
 }
 
 
