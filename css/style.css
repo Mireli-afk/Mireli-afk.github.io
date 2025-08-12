@@ -37,6 +37,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* AÑADIDO */
+    z-index: 1001;    /* AÑADIDO */
 }
 
 nav {
@@ -114,6 +116,15 @@ nav a::after {
 /* El estado de la línea cuando pasas el ratón por el enlace */
 nav a:hover::after {
     width: 70%; /* La línea crece hasta el 70% del ancho */
+}
+
+.menu-hamburguesa {
+    display: none;
+    font-size: 28px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 /* Estilo para el ícono dentro del enlace */
@@ -507,15 +518,18 @@ section[id] {
 
 /* --- ESTILOS RESPONSIVOS PARA MÓVILES (CON MENÚ DE HAMBURGUESA) --- */
 @media (max-width: 992px) {
+    /* --- Ajustes de Header --- */
     header {
         justify-content: space-between;
     }
     header h1, header .btn-volver {
-        display: none;
+        display: none; /* Ocultamos elementos para dar espacio */
     }
     .menu-hamburguesa {
-        display: block;
+        display: block; /* Hacemos visible el botón de hamburguesa */
     }
+
+    /* --- Transformación de la Navegación --- */
     nav {
         position: fixed;
         top: 0;
@@ -549,19 +563,20 @@ section[id] {
     }
     nav a:hover {
         background-color: rgba(255, 255, 255, 0.1);
-        transform: none;
+        transform: none; /* Quitamos animación de escritorio */
     }
     nav a::after {
-        display: none;
+        display: none; /* Quitamos línea de escritorio */
     }
+
+    /* --- Ajustes generales de layout para móvil --- */
     .container {
         flex-direction: column;
         padding: 20px;
         margin: 10px;
     }
     .columna-video {
-        flex: 1;
-        padding-bottom: 56.25%;
+        flex: 1 1 100%;
         margin-bottom: 20px;
     }
     .columna-formulario form input {
@@ -571,6 +586,6 @@ section[id] {
         grid-template-columns: 1fr;
     }
     section[id] {
-        scroll-margin-top: 80px;
+        scroll-margin-top: 80px; /* Ajuste de anclaje para header móvil */
     }
 }
