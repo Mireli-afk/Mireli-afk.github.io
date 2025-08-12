@@ -44,21 +44,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // --- CÓDIGO PARA EL MENÚ DE HAMBURGUESA (FUNCIONA EN TODAS LAS PÁGINAS) ---
-
+    // --- LÓGICA PARA EL MENÚ DE HAMBURGUESA ---
     const menuHamburguesa = document.querySelector('.menu-hamburguesa');
     const nav = document.querySelector('nav');
     const navLinks = document.querySelectorAll('nav a');
 
     if (menuHamburguesa && nav) {
-        // Evento para abrir/cerrar el menú al hacer clic en el botón
         menuHamburguesa.addEventListener('click', () => {
             nav.classList.toggle('activo');
         });
     }
 
-    // Evento para cerrar el menú automáticamente al hacer clic en un enlace
-    // (muy útil para la navegación en la misma página en móviles)
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (nav.classList.contains('activo')) {
