@@ -577,6 +577,18 @@ section[id] {
 /* --- ESTILOS RESPONSIVOS PARA MÓVILES Y TABLETS --- */
 @media (max-width: 992px) {
     
+    h1 {
+        font-size: 1.8em; /* Reducimos el h1 (ej: "Preguntas y respuestas") */
+    }
+
+    h2 {
+        font-size: 1.4em; /* Reducimos los h2 (ej: "¿Qué beneficios...?") */
+    }
+
+    .header-financiamiento h2 {
+        font-size: 1.5em; /* Ajuste específico para el título en la pág. de financiamiento */
+    }
+
     /* --- Ajustes de Header y Menú Hamburguesa --- */
     header {
         padding: 10px 20px;
@@ -648,5 +660,41 @@ section[id] {
     }
     section[id] {
         scroll-margin-top: 80px;
+    }
+
+        /* --- AJUSTES PARA LA VISTA DE FINANCIAMIENTO EN MÓVIL --- */
+
+    /* Hacemos que la grilla de opciones sea de una sola columna */
+    .opciones-cuotas {
+        gap: 25px; /* Aumentamos el espacio vertical */
+    }
+
+    .opcion-cuota-link {
+        grid-template-columns: 1fr; /* ¡La clave! Pasamos a una sola columna */
+        gap: 10px; /* Reducimos el espacio entre botón y detalle */
+        text-align: center; /* Centramos el texto del detalle */
+        padding: 20px;
+        border: 1px solid #e0e0e0; /* Hacemos el borde visible por defecto en móvil */
+    }
+    
+    .opcion-cuota-link:hover {
+        /* Desactivamos efectos de hover que no aplican bien en táctil */
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .detalle-cuota {
+        border-bottom: none; /* Quitamos la línea de abajo */
+        padding-bottom: 0;
+    }
+
+    /* --- AJUSTES PARA EL FORMULARIO DE LA CALCULADORA EN MÓVIL --- */
+    .columna-formulario-calculadora {
+        /* (Ya debería estar en una sola columna por la regla de .container) */
+    }
+
+    /* La grilla de dos columnas del formulario también pasa a una */
+    .grid-dos-columnas {
+        grid-template-columns: 1fr;
     }
 }
