@@ -16,34 +16,53 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
     <header>
-        <img src="images/logo.png" alt="Logo Terrazas del Sol" class="logo">
+        <a href="index.html">
+            <img src="images/logo.png" alt="Logo Terrazas del Sol" class="logo">
+        </a>
         <h2>Financiamiento por lote</h2>
-        <a href="index.html" class="btn-volver">Volver →</a>
+        <a href="index.html" class="btn-volver">⬅ Volver</a>
     </header>
     <main>
         <div id="vista-financiamiento-lote" class="container">
             <div class="financiamiento-lote-contenido">
                 <div class="opciones-cuotas">
-                    <a href="calculadora.html?plan=contado" class="btn-cuota">CONTADO <strong>hasta 30 días</strong></a>
-                    <div class="detalle-cuota"><span>Separa desde S/. 1,000.00</span> - <span>Dcto. S/. 5,500.00</span></div>
+                    <!-- Opción Contado -->
+                    <a href="calculadora.html?plan=contado" class="opcion-cuota-link">
+                        <span class="btn-cuota">CONTADO <strong>hasta 30 días</strong></span>
+                        <span class="detalle-cuota">Separa desde S/. 1,000.00 - Dcto. S/. 5,500.00</span>
+                    </a>
+
+                    <!-- Opción 3 Cuotas -->
+                    <a href="calculadora.html?plan=3" class="opcion-cuota-link">
+                        <span class="btn-cuota">3 CUOTAS MENSUALES</span>
+                        <span class="detalle-cuota">Separa desde S/. 5,000.00 - Dcto. S/. 3,500.00</span>
+                    </a>
+
+                    <!-- Repite para las demás opciones -->
+                    <a href="calculadora.html?plan=6" class="opcion-cuota-link">
+                        <span class="btn-cuota">6 CUOTAS MENSUALES</span>
+                        <span class="detalle-cuota">Separa desde S/. 10,000.00 - Dcto. S/. 2,500.00</span>
+                    </a>
+
+                    <a href="calculadora.html?plan=12" class="opcion-cuota-link">
+                        <span class="btn-cuota">12 CUOTAS MENSUALES</span>
+                        <span class="detalle-cuota">Separa desde S/. 10,000.00 - Dcto. S/. 1,000.00</span>
+                    </a>
                     
-                    <a href="calculadora.html?plan=3" class="btn-cuota">3 CUOTAS MENSUALES</a>
-                    <div class="detalle-cuota"><span>Separa desde S/. 5,000.00</span> - <span>Dcto. S/. 3,500.00</span></div>
+                    <a href="calculadora.html?plan=24" class="opcion-cuota-link">
+                        <span class="btn-cuota">24 CUOTAS MENSUALES</span>
+                        <span class="detalle-cuota">Separa desde S/. 10,000.00 - Dcto. S/. 0.00</span>
+                    </a>
 
-                    <a href="calculadora.html?plan=6" class="btn-cuota">6 CUOTAS MENSUALES</a>
-                    <div class="detalle-cuota"><span>Separa desde S/. 10,000.00</span> - <span>Dcto. S/. 2,500.00</span></div>
+                    <a href="calculadora.html?plan=36" class="opcion-cuota-link">
+                        <span class="btn-cuota">36 CUOTAS MENSUALES</span>
+                        <span class="detalle-cuota">Separa desde S/. 10,000.00 - Interés: 1.25 % mensual</span>
+                    </a>
 
-                    <a href="calculadora.html?plan=12" class="btn-cuota">12 CUOTAS MENSUALES</a>
-                    <div class="detalle-cuota"><span>Separa desde S/. 10,000.00</span> - <span>Dcto. S/. 1,000.00</span></div>
-
-                    <a href="calculadora.html?plan=24" class="btn-cuota">24 CUOTAS MENSUALES</a>
-                    <div class="detalle-cuota"><span>Separa desde S/. 10,000.00</span> - <span>Dcto. S/. 0.00</span></div>
-                    
-                    <a href="calculadora.html?plan=36" class="btn-cuota">36 CUOTAS MENSUALES</a>
-                    <div class="detalle-cuota"><span>Separa desde S/. 10,000.00</span> - <span>Interés: 1.25 % mensual</span></div>
-
-                    <a href="calculadora.html?plan=48" class="btn-cuota">48 CUOTAS MENSUALES</a>
-                    <div class="detalle-cuota"><span>Separa desde S/. 10,000.00</span> - <span>Interés: 1.5 % mensual</span>
+                    <a href="calculadora.html?plan=48" class="opcion-cuota-link">
+                        <span class="btn-cuota">48 CUOTAS MENSUALES</span>
+                        <span class="detalle-cuota">Separa desde S/. 1,000.00 - Interés: 1.5 % mensual</span>
+                    </a>
                 </div>
             </div>
         </div>

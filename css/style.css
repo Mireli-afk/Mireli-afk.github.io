@@ -367,6 +367,11 @@ section[id] {
     background-color: #3a566f;
 }
 
+.contenedor-boton {
+    text-align: center; /* Centra el botón */
+    margin-top: 30px;   /* Añade un buen espacio arriba */
+}
+
 /* Vista 2: Financiamiento por Lote */
 #vista-financiamiento-lote {
     background-color: #f0f4f7;
@@ -386,24 +391,65 @@ section[id] {
 .logo-financiamiento {
     height: 40px;
 }
+/* --- ESTILOS MEJORADOS PARA LA VISTA DE FINANCIAMIENTO --- */
+
+/* Contenedor principal de las opciones */
 .opciones-cuotas {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 15px 20px;
+    display: flex; /* Usamos flexbox para apilar verticalmente */
+    flex-direction: column;
+    gap: 15px; /* Espacio entre cada opción de cuota */
 }
+
+/* Enlace que contiene cada opción (botón + detalle) */
+.opcion-cuota-link {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Columna fija para el botón, el resto para el detalle */
+    align-items: center;
+    gap: 25px; /* Espacio entre el botón y el detalle */
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid transparent; /* Borde transparente para la transición */
+    text-decoration: none;
+    color: inherit; /* Hereda el color del texto normal */
+    transition: all 0.3s ease;
+}
+
+/* Animación al pasar el ratón */
+.opcion-cuota-link:hover {
+    text-decoration: none;
+    background-color: #f8f9fa; /* Un fondo muy sutil */
+    border-color: #e0e0e0; /* El borde se hace visible */
+    transform: translateY(-3px); /* Efecto de levantar */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Sombra suave */
+}
+
+/* Estilo del "botón" (ahora es un span) */
 .btn-cuota {
+    display: inline-block;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 30px;
-    padding: 12px 25px;
+    padding: 12px 20px;
     font-size: 0.9em;
-    cursor: pointer;
+    font-weight: bold;
     text-align: center;
+    color: #333; /* Color de texto oscuro */
+    transition: all 0.3s ease; /* Transición para el hover */
 }
+
+/* Cambio de estilo del botón al pasar el ratón por el contenedor */
+.opcion-cuota-link:hover .btn-cuota {
+    background-color: #4A6B8A;
+    color: white;
+    border-color: #4A6B8A;
+}
+
+/* Estilo del texto de detalle */
 .detalle-cuota {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+    font-size: 0.95em;
+    color: #555;
 }
 
 /* --- SECCIÓN DE OFICINAS --- */
@@ -429,6 +475,50 @@ section[id] {
     min-height: 300px;
     border: none;
     border-radius: 8px;
+}
+
+#oficinas .guia-llegada {
+    gap: 15px; /* Añadimos espacio entre los "puntos" de la guía */
+}
+
+/* Alineamos correctamente cada punto (dirección y horarios) */
+#oficinas .punto {
+    align-items: center; /* Centra el ícono con el texto de la dirección */
+}
+
+/* Corregimos la línea punteada */
+#oficinas .linea-punteada {
+    height: 30px; /* Hacemos la línea un poco más corta */
+    margin-left: 14px;
+}
+
+/* Damos estilo específico al contenedor de los horarios */
+#oficinas .horarios-texto {
+    /* Eliminamos cualquier estilo de flex que pudiera heredar */
+    display: block;
+}
+
+/* Ajustamos los márgenes de los párrafos y listas dentro de los horarios */
+#oficinas .horarios-texto p {
+    margin: 10px 0 5px 0;
+    font-weight: bold;
+}
+
+#oficinas .horarios-texto ul {
+    margin: 0;
+    padding-left: 25px;
+    list-style-type: '• '; /* Viñeta de punto clásica */
+}
+
+#oficinas .horarios-texto li {
+    padding-left: 0;
+    margin-bottom: 5px;
+}
+
+/* Alineamos el H3 de la dirección */
+#oficinas .direccion-oficina {
+    font-size: 1.5em;
+    margin: 0;
 }
 
 /* NUEVOS ESTILOS PARA LA ESTRUCTURA UNIFICADA */
