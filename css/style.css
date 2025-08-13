@@ -342,6 +342,7 @@ section[id] {
     margin-right: 10px;
 }
 .btn-primario {
+    display: inline-block; /* Necesario para que <a> se comporte como botón */
     background-color: #4A6B8A;
     color: white;
     border: none;
@@ -350,7 +351,17 @@ section[id] {
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none; /* ¡Quita el subrayado! */
+    transition: all 0.3s ease; /* Anima todos los cambios */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-primario:hover {
+    background-color: #3a566f;
+    text-decoration: none; /* Asegura que no aparezca subrayado al pasar el ratón */
+    transform: translateY(-3px); /* Efecto de "levantarse" */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra más pronunciada */
 }
 .btn-primario:hover {
     background-color: #3a566f;
