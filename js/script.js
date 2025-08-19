@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (burbujaChatbot && ventanaChatbot && btnCerrarChatbot) {
         
         // URL de tu Webhook de n8n
-        const N8N_WEBHOOK_URL = 'https://n8n-service-z93e.onrender.com/webhook/agente-terrazas'; // ¡URL que me pasaste!
+        const N8N_WEBHOOK_URL = 'https://n8n-service-z93e.onrender.com/webhook/agente_terrazas'; // ¡URL que me pasaste!
 
         // Eventos para mostrar y ocultar la ventana
         burbujaChatbot.addEventListener('click', () => ventanaChatbot.classList.toggle('oculta'));
