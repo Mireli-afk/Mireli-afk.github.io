@@ -12,10 +12,10 @@ const datosLotes = {
     "H-21": { area: 200, precio: 60500 },
     // Manzana G
     "G-1": { area: 259, precio: 87500 },
-    "G-12": { area: 374, precio: 109500 },
-    "G-11": { area: 253, precio: 85500 },
+    //"G-12": { area: 374, precio: 109500 },
+    //"G-11": { area: 253, precio: 85500 },
     // Manzana F
-    "F-1": { area: 238, precio: 112500 },
+    //"F-1": { area: 238, precio: 112500 },
     "F-11": { area: 200, precio: 95500 },
     "F-12": { area: 200, precio: 95500 },
     "F-13": { area: 200, precio: 95500 },
@@ -25,7 +25,7 @@ const datosLotes = {
     "F-17": { area: 200, precio: 68500 },
     "F-18": { area: 200, precio: 68500 },
     "F-19": { area: 200, precio: 68500 },
-    "F-21": { area: 370, precio: 128500 },
+    //"F-21": { area: 370, precio: 128500 },
     "F-25": { area: 200, precio: 68500 },
     "F-26": { area: 200, precio: 68500 },
     // Manzana E
