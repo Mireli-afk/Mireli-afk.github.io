@@ -163,6 +163,41 @@ document.addEventListener('DOMContentLoaded', function() {
         doc.save(nombreArchivo);
     }
 
+    // --- LÓGICA PARA EL ZOOM DEL MAPA DE LOTES ---
+    const mapaLotesZoom = document.getElementById('mapaLotesZoom');
+    
+    if (mapaLotesZoom) {
+        const zoomContainer = mapaLotesZoom.closest('.mapa-zoom-container');
+
+        if (zoomContainer) {
+            zoomContainer.addEventListener('click', () => {
+                zoomContainer.classList.toggle('zoomed');
+            });
+
+            // Para que el zoom siga el ratón (más avanzado)
+            zoomContainer.addEventListener('mousemove', (e) => {
+                if (zoomContainer.classList.contains('zoomed')) {
+                    const rect = zoomContainer.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width;
+                    const y = (e.clientY - rect.top) / rect.height;
+                    
+                    // Ajusta el origen de la transformación para que siga el ratón
+                    mapaLotesZoom.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                } else {
+                    mapaLotesZoom.style.transformOrigin = 'center center'; // Restablece cuando no hay zoom
+                }
+            });
+
+            // Restablecer el origen cuando el ratón sale si no está en zoom
+            zoomContainer.addEventListener('mouseleave', () => {
+                if (!zoomContainer.classList.contains('zoomed')) {
+                    mapaLotesZoom.style.transformOrigin = 'center center';
+                }
+            });
+        }
+    }
+
+
     // --- EVENT LISTENERS ---
     loteSelect.addEventListener('change', recalcularTodo);
     montoSeparacionInput.addEventListener('input', recalcularTodo);

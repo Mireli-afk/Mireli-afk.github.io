@@ -818,3 +818,56 @@ section[id] {
     color: white;
     cursor: pointer;
 }
+/* Estilos para el botón de descarga del mapa */
+.btn-descargar-mapa {
+    display: block; /* Para que ocupe todo el ancho disponible */
+    background-color: #4A6B8A;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px; /* Espacio entre la imagen y el botón */
+    transition: background-color 0.3s ease;
+}
+
+.btn-descargar-mapa:hover {
+    background-color: #3a566f;
+    text-decoration: none;
+}
+
+.btn-descargar-mapa i {
+    margin-right: 8px;
+}
+
+/* Ajustes para móviles si el botón queda mal */
+@media (max-width: 992px) {
+    .columna-imagen .btn-descargar-mapa {
+        width: 100%; /* Asegura que el botón ocupe el ancho completo en móvil */
+    }
+}
+/* Estilos para el contenedor del mapa con zoom */
+.mapa-zoom-container {
+    width: 100%;
+    height: auto; /* Mantener la proporción */
+    overflow: hidden; /* Oculta partes de la imagen cuando está ampliada */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: zoom-in; /* Indica que se puede hacer zoom */
+    position: relative; /* Necesario para posicionar la imagen ampliada */
+}
+
+.mapa-zoom-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-out; /* Suaviza la transición del zoom */
+    transform-origin: center center; /* El zoom se origina desde el centro */
+}
+
+/* Estado de zoom activado */
+.mapa-zoom-container.zoomed img {
+    transform: scale(2); /* Ajusta el factor de zoom aquí (2 = 200%) */
+    cursor: zoom-out; /* Cambia el cursor para indicar que se puede alejar */
+}

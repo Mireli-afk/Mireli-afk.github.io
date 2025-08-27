@@ -131,8 +131,13 @@
             </form>
         </div>
         <div class="columna-imagen">
-            <!-- Asegúrate de tener esta imagen en tu carpeta /images/ -->
-            <img src="images/mapa-lotes.png" alt="Mapa de lotes del proyecto" loading="lazy">
+            <!-- Contenedor para la imagen con zoom -->
+            <div class="mapa-zoom-container">
+                <img id="mapaLotesZoom" src="images/mapa-lotes.png" alt="Mapa de lotes del proyecto" loading="lazy">
+            </div>
+            <a href="images/mapa-lotes.png" download="mapa-lotes-terrazas-del-sol.png" class="btn-descargar-mapa">
+                <i class="fa-solid fa-download"></i> Descargar Mapa
+            </a>
         </div>
     </section>
 
@@ -214,31 +219,5 @@
     <script src="js/datos.js"></script>
     <!-- Luego el script principal que la utiliza -->
     <script src="js/script.js"></script>
-
-    <!-- ============================================= -->
-    <!--      ESTRUCTURA DEL CHATBOT DE IA             -->
-    <!-- ============================================= -->
-    <div id="chatbot-burbuja" class="chatbot-burbuja">
-        <i class="fa-solid fa-robot"></i>
-    </div>
-
-    <div id="chatbot-ventana" class="chatbot-ventana oculta">
-        <div class="chatbot-header">
-            <span>Asistente Virtual</span>
-            <button id="chatbot-cerrar">&times;</button>
-        </div>
-        <div id="chatbot-cuerpo" class="chatbot-cuerpo">
-            <!-- Los mensajes del chat aparecerán aquí -->
-            <div class="mensaje-bot">¡Hola! Soy el asistente de Terrazas del Sol. ¿Cómo puedo ayudarte?</div>
-        </div>
-        <div class="chatbot-footer">
-            <input type="text" id="chatbot-input" placeholder="Escribe un mensaje...">
-            <button id="chatbot-enviar"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
-    </div>
-    <!-- ============================================= -->
-    <!--         FIN DE LA ESTRUCTURA DEL CHATBOT      -->
-    <!-- ============================================= -->
-
 </body>
 </html>

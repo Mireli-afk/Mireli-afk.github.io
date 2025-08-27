@@ -33,11 +33,11 @@ const datosLotes = {
     "E-20": { area: 120, precio: 53500 },
     "E-21": { area: 120, precio: 53500 },
     "E-24": { area: 120, precio: 55500 },
-    "E-43": { area: 220, precio: 94500 },
+    //"E-43": { area: 220, precio: 94500 },
     // Manzana B
     "B-19": { area: 120, precio: 49000 },
     "B-32": { area: 120, precio: 49000 },
-    "B-34": { area: 120, precio: 49000 },
+    //"B-34": { area: 120, precio: 49000 },
     // Manzana A
     "A-20": { area: 120, precio: 58500 },
     "A-21": { area: 120, precio: 58500 },

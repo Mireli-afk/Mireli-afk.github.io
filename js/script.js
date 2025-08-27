@@ -63,70 +63,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- LÓGICA PARA EL CHATBOT FLOTANTE CON N8N ---
+        // --- LÓGICA PARA EL ZOOM DEL MAPA DE LOTES ---
+    const mapaLotesZoom = document.getElementById('mapaLotesZoom');
+    
+    if (mapaLotesZoom) {
+        const zoomContainer = mapaLotesZoom.closest('.mapa-zoom-container');
 
-    const burbujaChatbot = document.getElementById('chatbot-burbuja');
-    const ventanaChatbot = document.getElementById('chatbot-ventana');
-    const btnCerrarChatbot = document.getElementById('chatbot-cerrar');
-    const cuerpoChatbot = document.getElementById('chatbot-cuerpo');
-    const inputChatbot = document.getElementById('chatbot-input');
-    const btnEnviarChatbot = document.getElementById('chatbot-enviar');
+        if (zoomContainer) {
+            zoomContainer.addEventListener('click', () => {
+                zoomContainer.classList.toggle('zoomed');
+            });
 
-    // Comprobamos que los elementos existan antes de añadir listeners
-    if (burbujaChatbot && ventanaChatbot && btnCerrarChatbot) {
-        
-        // URL de tu Webhook de n8n
-        const N8N_WEBHOOK_URL = 'https://n8n-service-z93e.onrender.com/webhook/agente_terrazas'; // ¡URL que me pasaste!
+            // Para que el zoom siga el ratón (más avanzado)
+            zoomContainer.addEventListener('mousemove', (e) => {
+                if (zoomContainer.classList.contains('zoomed')) {
+                    const rect = zoomContainer.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width;
+                    const y = (e.clientY - rect.top) / rect.height;
+                    
+                    // Ajusta el origen de la transformación para que siga el ratón
+                    mapaLotesZoom.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                } else {
+                    mapaLotesZoom.style.transformOrigin = 'center center'; // Restablece cuando no hay zoom
+                }
+            });
 
-        // Eventos para mostrar y ocultar la ventana
-        burbujaChatbot.addEventListener('click', () => ventanaChatbot.classList.toggle('oculta'));
-        btnCerrarChatbot.addEventListener('click', () => ventanaChatbot.classList.add('oculta'));
-
-        // Función para enviar el mensaje al hacer clic o presionar Enter
-        const enviarMensaje = async () => {
-            const pregunta = inputChatbot.value.trim();
-            if (pregunta === '') return;
-
-            agregarMensaje(pregunta, 'usuario');
-            inputChatbot.value = '';
-            
-            const mensajeEscribiendo = agregarMensaje('Asistente está escribiendo...', 'bot escribiendo');
-
-            try {
-                const response = await fetch(N8N_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ pregunta: pregunta })
-                });
-
-                if (!response.ok) throw new Error('Error en la respuesta de n8n');
-
-                const data = await response.json();
-                const textoRespuesta = data.respuesta || "No he podido entender tu pregunta. ¿Puedes reformularla?";
-                
-                cuerpoChatbot.removeChild(mensajeEscribiendo);
-                agregarMensaje(textoRespuesta, 'bot');
-            } catch (error) {
-                console.error('Error al contactar al asistente de IA:', error);
-                cuerpoChatbot.removeChild(mensajeEscribiendo);
-                agregarMensaje('Lo siento, estoy teniendo problemas de conexión. Inténtalo más tarde.', 'bot');
-            }
-        };
-
-        // Función auxiliar para crear y añadir burbujas de mensaje al chat
-        const agregarMensaje = (texto, tipo) => {
-            const divMensaje = document.createElement('div');
-            divMensaje.className = `mensaje-${tipo}`;
-            divMensaje.textContent = texto;
-            cuerpoChatbot.appendChild(divMensaje);
-            cuerpoChatbot.scrollTop = cuerpoChatbot.scrollHeight;
-            return divMensaje;
-        };
-
-        btnEnviarChatbot.addEventListener('click', enviarMensaje);
-        inputChatbot.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') enviarMensaje();
-        });
+            // Restablecer el origen cuando el ratón sale si no está en zoom
+            zoomContainer.addEventListener('mouseleave', () => {
+                if (!zoomContainer.classList.contains('zoomed')) {
+                    mapaLotesZoom.style.transformOrigin = 'center center';
+                }
+            });
+        }
     }
     
 });
