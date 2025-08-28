@@ -871,3 +871,50 @@ section[id] {
     transform: scale(2); /* Ajusta el factor de zoom aquí (2 = 200%) */
     cursor: zoom-out; /* Cambia el cursor para indicar que se puede alejar */
 }
+
+/* --- SECCIÓN DE OFICINAS --- */
+#oficinas .guia-llegada {
+    gap: 0; /* Quitamos el gap para controlar el espacio manualmente */
+}
+
+#oficinas .punto {
+    align-items: flex-start; /* Alineamos los íconos con el inicio del texto */
+    margin-bottom: 15px; /* Espacio debajo de cada punto */
+}
+
+#oficinas .linea-punteada {
+    height: 30px;
+    margin: -15px 0 15px 14px; /* Margen negativo para acercar los puntos */
+}
+
+/* Contenedor para el texto al lado del ícono */
+#oficinas .info-texto {
+    display: flex;
+    flex-direction: column;
+}
+
+#oficinas .direccion-oficina {
+    font-size: 1.5em;
+    margin: 0;
+    line-height: 1.2;
+}
+
+#oficinas .subtitulo-oficina {
+    margin: 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Ajustamos los horarios */
+#oficinas .horarios-texto p {
+    margin: 0 0 5px 0;
+    font-weight: bold;
+}
+#oficinas .horarios-texto ul {
+    margin: 0 0 10px 0;
+    padding-left: 20px;
+}
+#oficinas .horarios-texto li {
+    padding-left: 0;
+    margin-bottom: 5px;
+}
