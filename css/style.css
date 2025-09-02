@@ -577,28 +577,17 @@ section[id] {
 /* --- ESTILOS RESPONSIVOS PARA MÓVILES Y TABLETS --- */
 @media (max-width: 992px) {
     
-    h1 {
-        font-size: 1.8em; /* Reducimos el h1 (ej: "Preguntas y respuestas") */
-    }
-
-    h2 {
-        font-size: 1.4em; /* Reducimos los h2 (ej: "¿Qué beneficios...?") */
-    }
-
-    .header-financiamiento h2 {
-        font-size: 1.5em; /* Ajuste específico para el título en la pág. de financiamiento */
-    }
-
     /* --- Ajustes de Header y Menú Hamburguesa --- */
     header {
-        padding: 10px 20px;
-        justify-content: space-between;
         position: sticky;
         top: 0;
         z-index: 1001;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 20px;
     }
     header h1, header .btn-volver {
-        display: none;
+        display: none; /* Oculta el título y "Volver" del header principal */
     }
     .menu-hamburguesa {
         display: block;
@@ -629,195 +618,59 @@ section[id] {
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         width: 100%;
     }
-    nav a {
-        padding: 20px 30px;
-        width: 100%;
-        font-size: 1.1em;
-    }
-    nav a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        transform: none;
-    }
-    nav a::after {
-        display: none;
-    }
+    nav a { padding: 20px 30px; width: 100%; font-size: 1.1em; }
+    nav a:hover { background-color: rgba(255, 255, 255, 0.1); transform: none; }
+    nav a::after { display: none; }
 
     /* --- Ajustes Generales de Layout para Móvil --- */
     .container {
         flex-direction: column;
-        padding: 20px;
+        padding: 25px 20px;
         margin: 10px;
-    }
-    .columna-video {
-        flex: 1 1 100%;
-        margin-bottom: 20px;
-    }
-    .columna-formulario form input {
-        width: 95%;
-    }
-    .grid-dos-columnas {
-        grid-template-columns: 1fr;
     }
     section[id] {
         scroll-margin-top: 80px;
     }
 
-        /* --- AJUSTES PARA LA VISTA DE FINANCIAMIENTO EN MÓVIL --- */
-
-    /* Hacemos que la grilla de opciones sea de una sola columna */
-    .opciones-cuotas {
-        gap: 25px; /* Aumentamos el espacio vertical */
+    /* --- CORRECCIÓN PARA PÁGINA DE FINANCIAMIENTO --- */
+    #vista-financiamiento-lote .header-financiamiento .btn-volver {
+        display: block !important; /* Hacemos que el "Volver" SÍ aparezca aquí */
+        color: white;
+        text-decoration: none;
     }
-
     .opcion-cuota-link {
-        grid-template-columns: 1fr; /* ¡La clave! Pasamos a una sola columna */
-        gap: 10px; /* Reducimos el espacio entre botón y detalle */
-        text-align: center; /* Centramos el texto del detalle */
+        display: flex; /* Cambiamos a flexbox para apilar */
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
         padding: 20px;
-        border: 1px solid #e0e0e0; /* Hacemos el borde visible por defecto en móvil */
+        border: 1px solid #e0e0e0;
     }
-    
     .opcion-cuota-link:hover {
-        /* Desactivamos efectos de hover que no aplican bien en táctil */
         transform: none;
         box-shadow: none;
     }
-    
     .detalle-cuota {
-        border-bottom: none; /* Quitamos la línea de abajo */
+        border-bottom: none;
         padding-bottom: 0;
+        font-size: 0.9em;
     }
 
-    /* La grilla de dos columnas del formulario también pasa a una */
+    /* --- CORRECCIÓN PARA EL FORMULARIO DE LA CALCULADORA --- */
+    .columna-formulario-calculadora .header-financiamiento .btn-volver {
+        display: block !important; /* Hacemos que el "Volver" SÍ aparezca aquí */
+    }
     .grid-dos-columnas {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Apila los campos del formulario */
     }
+    
+    /* --- Ajustes de Tipografía para Móvil --- */
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.4em; }
+    .header-financiamiento h2 { font-size: 1.5em; }
 }
 
-/* --- ESTILOS DEL CHATBOT DE IA --- */
-.chatbot-burbuja {
-    position: fixed;
-    bottom: 30px;
-    left: 30px; /* Lo ponemos a la izquierda para no chocar con WhatsApp */
-    width: 60px;
-    height: 60px;
-    background-color: #4A6B8A;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 998;
-    transition: transform 0.3s ease;
-}
-.chatbot-burbuja:hover {
-    transform: scale(1.1);
-}
 
-.chatbot-ventana {
-    position: fixed;
-    bottom: 100px;
-    left: 30px;
-    width: 360px;
-    max-width: calc(100vw - 40px); /* Asegura que no se salga de la pantalla */
-    height: 500px;
-    max-height: 70vh;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 999;
-    transform: scale(1);
-    transform-origin: bottom left;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-/* Estilo para cuando está oculta */
-.chatbot-ventana.oculta {
-    transform: scale(0);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.chatbot-header {
-    background-color: #4A6B8A;
-    color: white;
-    padding: 15px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
-}
-.chatbot-cerrar {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    line-height: 1;
-}
-
-.chatbot-cuerpo {
-    flex-grow: 1;
-    padding: 15px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.mensaje-bot, .mensaje-usuario {
-    padding: 10px 15px;
-    border-radius: 18px;
-    max-width: 85%;
-    line-height: 1.4;
-}
-.mensaje-bot {
-    background-color: #f1f0f0;
-    align-self: flex-start;
-    border-bottom-left-radius: 4px;
-}
-.mensaje-usuario {
-    background-color: #4A6B8A;
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 4px;
-}
-.mensaje-bot.escribiendo {
-    font-style: italic;
-    color: #888;
-}
-
-.chatbot-footer {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #eee;
-    background: #fff;
-    flex-shrink: 0;
-}
-#chatbot-input {
-    flex-grow: 1;
-    border: 1px solid #ddd;
-    padding: 10px 15px;
-    border-radius: 20px;
-    background-color: #fff;
-    margin-right: 10px;
-}
-#chatbot-input:focus { outline: 2px solid #4A6B8A; }
-#chatbot-enviar {
-    background: #4A6B8A;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-}
 /* Estilos para el botón de descarga del mapa */
 .btn-descargar-mapa {
     display: block; /* Para que ocupe todo el ancho disponible */
