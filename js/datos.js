@@ -20,7 +20,8 @@ const datosLotes = {
 
     // Manzana E
     "E-14": { area: 120, precio: 55500, disponible: true },
-    "E-20": { area: 120, precio: 55500, disponible: true },
+    //falso
+    "E-20": { area: 120, precio: 55500, disponible: false },
     "E-21": { area: 120, precio: 55500, disponible: true },
     "E-24": { area: 120, precio: 57500, disponible: true },
 
