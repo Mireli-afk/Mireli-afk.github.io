@@ -51,5 +51,9 @@ const datosLotes = {
     "I-5": { area: 279.52, precio: 86500, disponible: true },
     "I-6": { area: 239.52, precio: 75500, disponible: true },
     "I-7": { area: 200, precio: 65500, disponible: true },
-    "I-12": { area: 277.68, precio: 85500, disponible: true }
+    "I-12": { area: 277.68, precio: 85500, disponible: true },
+
+     // Manzana J
+    "J-12": { area: 154, precio: 77500, disponible: true },
+    "J-13": { area: 120, precio: 67500, disponible: true }
 };
